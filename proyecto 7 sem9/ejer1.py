@@ -1,6 +1,9 @@
-from wsgiref import validate
+from email.mime import base
+
 from cuadrado import cuadrado
 from rectangulo import rectangulo
+from triangulo import triangulo
+from trapecio import trapecio
 
 c = cuadrado()
 
@@ -50,12 +53,50 @@ while True:
             c.perimetro(l)
 
         case 2:
+            
             r = rectangulo()
 
-            print("\nArea: ", r.area())
+            print("\nRectangulo")
+            print("Área: ", r.area())
             print("perimetro: ", r.perimetro())
 
-        
+        case 3:
+            
+            t = triangulo()
+
+            print("\nTriángulo")
+            print("Área: ", t.area())
+            print("perimetro", t.perimetro())
+
+        case 4:
+
+
+            while True:
+
+                try:
+
+                    base = float(input("\nIngresa la base del trapecio: "))
+                    base_superior = float(input("Ingresa la base superior del trapecio: "))
+                    altura = float(input("Ingresa la altura del trapecio: "))
+                    lado = float(input("Ingresa el lado del trapecio: "))
+
+                    if base > 0 and base_superior > 0 and altura > 0 and lado > 0:
+
+
+                        break
+                    else:
+                        print("Ingresa número positivo")
+                
+                except ValueError:
+                    
+                    print("invalido")
+
+            tra = trapecio()
+            
+            print("\nTrapecio")
+            print("Área", tra.area(base, base_superior, altura))
+            print("perimetro",tra.perimetro(base, base_superior, lado))
+
     while True:
 
         continuar = (input("\n¿Deseas continuar? (si, no): ")).lower().strip()
@@ -66,3 +107,4 @@ while True:
 
     if continuar == "no":
         break
+    print()
